@@ -1,22 +1,19 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.android.application)
+    alias(libs.plugins.android.library)
     alias(libs.plugins.kotlin.android)
 }
 
 android {
-    namespace = "org.windmill.hw.simplepainter"
+    namespace = "org.windmill.hw.app_core"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "org.windmill.hw.simplepainter"
         minSdk = 25
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -45,8 +42,31 @@ android {
 }
 
 dependencies {
-    implementation(project(":app_core"))
+    implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar", "*.aar"))))
+    implementation(libs.androidx.core.ktx)
+    api(libs.androidx.appcompat)
+    implementation(libs.immersionbar)
+    implementation(libs.immersionbar.ktx)
+    implementation(libs.androidx.constraintlayout)
+    api(libs.fastjson)
+    api(libs.okhttp)
+    api(libs.retrofit2)
+    api(libs.retrofit2.gson)
+    api(libs.retrofit2.xml) {
+        exclude(module = "stax")
+        exclude(module = "stax-api")
+        exclude(module = "xpp3")
+    }
     implementation(project(":app_data"))
+    implementation(project(":app_res"))
+    implementation(libs.gson)
+    implementation(libs.glide)
+    api(libs.zxing)
+    api(libs.unpeek.livedata)
+    api(libs.logger)
+    api(libs.multidex)
+    implementation(libs.material)
+    api(libs.work.runtime.ktx)
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)

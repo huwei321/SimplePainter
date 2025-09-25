@@ -21,4 +21,6 @@ dependencyResolutionManagement {
 
 rootProject.name = "SimplePainter"
 include(":app")
- 
+include(":app_core")
+include(":app_data")
+include(":app_res")

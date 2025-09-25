@@ -1,22 +1,19 @@
 import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
-    alias(libs.plugins.android.application)
-    alias(libs.plugins.kotlin.android)
+    alias(libs.plugins.android.library)
+    alias(libs.plugins.jetbrains.kotlin.android)
 }
 
 android {
-    namespace = "org.windmill.hw.simplepainter"
+    namespace = "org.windmill.hw.app.data"
     compileSdk = 36
 
     defaultConfig {
-        applicationId = "org.windmill.hw.simplepainter"
         minSdk = 25
-        targetSdk = 36
-        versionCode = 1
-        versionName = "1.0"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles("consumer-rules.pro")
     }
 
     buildTypes {
@@ -45,8 +42,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":app_core"))
-    implementation(project(":app_data"))
+
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.appcompat)
     implementation(libs.material)
