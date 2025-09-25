@@ -1,5 +1,7 @@
 package org.windmill.hw.simplepainter.ui
 
+import android.content.Intent
+import android.os.Bundle
 import org.windmill.hw.core.base.BaseViewModel
 import org.windmill.hw.core.base.BaseVmDbActivity
 import org.windmill.hw.simplepainter.R
@@ -17,4 +19,10 @@ class MainActivity : BaseVmDbActivity<BaseViewModel, MainActBinding>() {
     override fun createObserver() {
 
     }
+
+    override fun initView(savedInstanceState: Bundle?) {
+        super.initView(savedInstanceState)
+        startActivity(Intent(this, DrawActivity::class.java))
+    }
+
 }
